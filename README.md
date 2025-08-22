@@ -1,3 +1,7 @@
+---
+marp: false
+---
+
 # WeekTime Picker
 
 A flexible week time grid component for Vue and React applications.
@@ -23,7 +27,12 @@ A flexible week time grid component for Vue and React applications.
 
 ```bash
 npm install @weektime-picker/vue
+or
+pnpm add @weektime-picker/react
+
 ```
+
+![alt text](./images/vue.png)
 
 ```vue
 <template>
@@ -51,7 +60,11 @@ const handleSelectedRangesChange = (ranges) => {
 
 ```bash
 npm install @weektime-picker/react
+or
+pnpm add @weektime-picker/react
 ```
+
+![alt text](./images/react.png)
 
 ```jsx
 import React, { useState } from "react";

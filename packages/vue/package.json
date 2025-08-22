@@ -22,7 +22,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "weektime-picker-core": "0.2.0"
+    "weektime-picker-core": "workspace:*"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.1",
