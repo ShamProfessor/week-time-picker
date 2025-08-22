@@ -1,0 +1,35 @@
+{
+  "name": "@weektime-picker/core",
+  "version": "0.2.0",
+  "description": "Core logic for weektime-picker component",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c && node scripts/postbuild.js",
+    "clean": "rimraf dist",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "time-picker",
+    "week-time-grid"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.0",
+    "rimraf": "^5.0.0",
+    "rollup": "^3.21.5",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4",
+    "vitest": "^0.30.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

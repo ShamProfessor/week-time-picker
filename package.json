@@ -1,0 +1,32 @@
+{
+  "name": "weektime-picker",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Week time grid component for Vue and React",
+  "scripts": {
+    "dev:core": "pnpm --filter @weektime-picker/core dev",
+    "dev:vue": "pnpm --filter @weektime-picker/vue dev",
+    "dev:react": "pnpm --filter @weektime-picker/react dev",
+    "build": "pnpm run build:deps",
+    "build:deps": "pnpm --filter @weektime-picker/core build && pnpm --filter @weektime-picker/react build && pnpm --filter @weektime-picker/vue build",
+    "build:all": "pnpm --filter @weektime-picker/* build",
+    "test": "pnpm --filter @weektime-picker/* test",
+    "clean": "pnpm --filter @weektime-picker/* clean",
+    "release": "bash scripts/release.sh"
+  },
+  "keywords": [
+    "time-picker",
+    "week-time-grid",
+    "vue",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@changesets/cli": "^2.27.11",
+    "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
