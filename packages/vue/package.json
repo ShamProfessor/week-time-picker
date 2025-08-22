@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "vite examples --config ./vite.config.ts",
     "build": "vite build",
     "clean": "rimraf dist",
     "test": "vitest run"
@@ -22,7 +22,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@weektime-picker/core": "workspace:*"
+    "weektime-picker-core": "0.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.1",

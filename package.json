@@ -7,12 +7,10 @@
     "dev:core": "pnpm --filter @weektime-picker/core dev",
     "dev:vue": "pnpm --filter @weektime-picker/vue dev",
     "dev:react": "pnpm --filter @weektime-picker/react dev",
-    "build": "pnpm run build:deps",
-    "build:deps": "pnpm --filter @weektime-picker/core build && pnpm --filter @weektime-picker/react build && pnpm --filter @weektime-picker/vue build",
-    "build:all": "pnpm --filter @weektime-picker/* build",
+    "build": "pnpm --filter @weektime-picker/* build",
     "test": "pnpm --filter @weektime-picker/* test",
     "clean": "pnpm --filter @weektime-picker/* clean",
-    "release": "bash scripts/release.sh"
+    "release": "./release.sh"
   },
   "keywords": [
     "time-picker",

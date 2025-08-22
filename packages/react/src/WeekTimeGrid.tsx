@@ -251,8 +251,6 @@ export const WeekTimeGrid: React.FC<WeekTimeGridProps> = ({
 
   // 监听 props 变化
   useEffect(() => {
-    debugger;
-
     // 重新初始化核心实例
     const options: WeekTimeGridOptions = {
       dayLabels,

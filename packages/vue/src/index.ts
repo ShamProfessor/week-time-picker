@@ -12,4 +12,4 @@ export default {
 };
 
 // 导出类型
-export type { TimeRange, WeekTimeGridOptions } from '@weektime-picker/core';
+export type { TimeRange, WeekTimeGridOptions } from 'weektime-picker-core';

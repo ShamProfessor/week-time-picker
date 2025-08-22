@@ -8,4 +8,4 @@ export default WeekTimeGrid;
 
 // 导出类型
 export type { WeekTimeGridProps } from "./WeekTimeGrid";
-export type { TimeRange, WeekTimeGridOptions } from "@weektime-picker/core";
+export type { TimeRange, WeekTimeGridOptions } from "weektime-picker-core";

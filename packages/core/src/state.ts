@@ -210,7 +210,6 @@ export class WeekTimeGridState {
    * @param ranges 时间范围数组
    */
   public setSelectedRanges(ranges: TimeRange[]): void {
-    debugger;
     // 清除当前选中状态
     this.clearSelection();
 

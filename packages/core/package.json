@@ -1,5 +1,5 @@
 {
-  "name": "@weektime-picker/core",
+  "name": "weektime-picker-core",
   "version": "0.2.0",
   "description": "Core logic for weektime-picker component",
   "main": "dist/index.js",
