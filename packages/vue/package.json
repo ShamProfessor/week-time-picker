@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "dev": "vite examples --config ./vite.config.ts",
-    "build": "vite build && npx vue-tsc -p tsconfig.build.json",
+    "build": "vite build && npx vue-tsc -p tsconfig.build.json --emitDeclarationOnly",
     "clean": "rimraf dist",
     "test": "vitest run"
   },
@@ -23,8 +23,20 @@
     "week-time-grid",
     "vue"
   ],
-  "author": "",
+  "author": "ShamProfessor",
   "license": "MIT",
+  "homepage": "https://github.com/ShamProfessor/week-time-picker#readme",
+  "bugs": {
+    "url": "https://github.com/ShamProfessor/week-time-picker/issues"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "dependencies": {
     "@weektime-picker/core": "workspace:*"
   },

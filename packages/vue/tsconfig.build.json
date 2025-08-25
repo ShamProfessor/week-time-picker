@@ -1,12 +1,23 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": false,
     "declaration": true,
-    "declarationMap": true,
+    "declarationMap": false,
+    "sourceMap": false,
+    "removeComments": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
     "emitDeclarationOnly": true,
-    "outDir": "dist",
-    "rootDir": "src"
+    "noEmit": false,
+    "skipLibCheck": true,
+    "paths": {}
   },
-  "include": ["src"]
+  "include": ["src/**/*"],
+  "exclude": [
+    "src/**/*.test.ts",
+    "src/**/*.test.vue",
+    "src/**/*.spec.ts",
+    "src/**/*.spec.vue",
+    "examples/**/*"
+  ]
 }

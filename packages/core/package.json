@@ -6,7 +6,9 @@
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist/*.js",
+    "dist/*.d.ts",
+    "README.md"
   ],
   "scripts": {
     "dev": "rollup -c -w",
@@ -22,9 +24,26 @@
     "time-picker",
     "week-time-grid"
   ],
-  "author": "",
+  "author": "ShamProfessor",
   "license": "MIT",
+  "homepage": "https://github.com/ShamProfessor/week-time-picker#readme",
+  "bugs": {
+    "url": "https://github.com/ShamProfessor/week-time-picker/issues"
+  },
   "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "development": {
+        "import": "./src/index.ts",
+        "require": "./dist/index.js",
+        "types": "./src/index.ts"
+      },
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.0",
     "rimraf": "^5.0.0",

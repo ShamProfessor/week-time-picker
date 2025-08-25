@@ -4,12 +4,20 @@ import { resolve } from "path";
 
 export default defineConfig({
   plugins: [vue()],
+  resolve: {
+    alias: {
+      // 本地开发时直接使用源码
+      "@weektime-picker/core": resolve(__dirname, "../core/src/index.ts"),
+    },
+  },
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "WeekTimePickerVue",
       fileName: (format) => `index.${format}.js`,
     },
+    sourcemap: false, // 不生成 sourcemap
+    minify: true, // 启用压缩
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
       external: ["vue", "@weektime-picker/core"],

@@ -223,7 +223,7 @@ export class WeekTimeGridCore implements IWeekTimeGridCore {
         const hour = Math.floor(i / intervalsPerHour) + minHour;
         const minute = (i % intervalsPerHour) * timeInterval;
         const cellTime = this.timeToMinutes(hour, minute);
-        
+
         // 检查时间点是否在范围内
         if (cellTime >= actualStartTime && cellTime <= actualEndTime) {
           // 设置临时状态
@@ -260,7 +260,8 @@ export class WeekTimeGridCore implements IWeekTimeGridCore {
     const intervalsPerHour = 60 / timeInterval;
 
     // 遍历范围内的所有单元格
-    for (let hour = startHour; hour < endHour; hour++) { // 修改为 < 而不是 <=
+    for (let hour = startHour; hour < endHour; hour++) {
+      // 修改为 < 而不是 <=
       // 确保小时在有效范围内
       if (hour >= maxHour) break;
 
@@ -269,7 +270,10 @@ export class WeekTimeGridCore implements IWeekTimeGridCore {
         const cellTotalMinutes = hour * 60 + minute;
 
         // 检查是否在范围内（使用左闭右开区间 [start, end)）
-        if (cellTotalMinutes >= startTotalMinutes && cellTotalMinutes < endTotalMinutes) {
+        if (
+          cellTotalMinutes >= startTotalMinutes &&
+          cellTotalMinutes < endTotalMinutes
+        ) {
           // 设置临时状态
           const key = `${dayOfWeek}-${hour}-${minute}`;
           this.tempState.set(key, this.dragMode === "select");

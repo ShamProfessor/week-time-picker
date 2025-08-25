@@ -11,10 +11,7 @@
     "allowImportingTsExtensions": false, // 关键修改：解决 TS5096 警告
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false,
-    "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": false,
+    "noEmit": true,
 
     /* Linting */
     "strict": true,

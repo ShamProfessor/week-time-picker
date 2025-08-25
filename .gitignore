@@ -6,6 +6,10 @@ dist
 build
 .out
 
+# TypeScript
+*.tsbuildinfo
+**/*.d.ts.map
+
 # Logs
 logs
 *.log

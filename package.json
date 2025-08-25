@@ -18,8 +18,16 @@
     "vue",
     "react"
   ],
-  "author": "",
+  "author": "ShamProfessor",
   "license": "MIT",
+  "homepage": "https://github.com/ShamProfessor/week-time-picker#readme",
+  "bugs": {
+    "url": "https://github.com/ShamProfessor/week-time-picker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShamProfessor/week-time-picker.git"
+  },
   "devDependencies": {
     "@changesets/cli": "^2.27.11",
     "typescript": "^5.0.4"

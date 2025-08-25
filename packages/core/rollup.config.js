@@ -7,21 +7,18 @@ export default defineConfig({
     {
       file: "dist/index.js",
       format: "cjs",
-      sourcemap: true,
+      sourcemap: false, // 生产环境不需要 sourcemap
       exports: "named",
     },
     {
       file: "dist/index.esm.js",
       format: "esm",
-      sourcemap: true,
+      sourcemap: false, // 生产环境不需要 sourcemap
     },
   ],
   plugins: [
     typescript({
-      tsconfig: "./tsconfig.json",
-      declaration: true,
-      declarationDir: "./dist",
-      declarationMap: true,
+      tsconfig: "./tsconfig.build.json",
     }),
   ],
   external: [],

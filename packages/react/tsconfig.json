@@ -13,6 +13,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@weektime-picker/core": ["../core/src/index.ts"]
+    },
 
     /* Linting */
     "strict": true,
