@@ -158,8 +158,6 @@ export const WeekTimeGrid: React.FC<WeekTimeGridProps> = ({
       return;
     }
 
-    const dragDuration = Date.now() - dragStartTimeRef.current;
-
     // 结束拖动操作
     coreRef.current.handleDragEnd();
 

@@ -1,15 +1,11 @@
----
-marp: false
----
-
 # WeekTime Picker
 
-A flexible week time grid component for Vue and React applications.
+A flexible week time grid component for Vue React applications.
 
 ## Features
 
 - 📅 Week-based time selection grid
-- ⚡ Support for Vue 3 and React 18+
+- ⚡ Support for Vue 3
 - 🎨 Customizable themes and styling
 - 📱 Responsive design
 - 🔧 TypeScript support
@@ -17,9 +13,7 @@ A flexible week time grid component for Vue and React applications.
 
 ## Packages
 
-- `@weektime-picker/core` - Core logic and utilities
 - `@weektime-picker/vue` - Vue 3 component
-- `@weektime-picker/react` - React component
 
 ## Installation & Usage
 
@@ -28,11 +22,11 @@ A flexible week time grid component for Vue and React applications.
 ```bash
 npm install @weektime-picker/vue
 or
-pnpm add @weektime-picker/react
+pnpm add @weektime-picker/vue
 
 ```
 
-![alt text](./images/vue.png)
+![vue示例](https://github.com/ShamProfessor/week-time-picker/blob/main/images/vue.png)
 
 ```vue
 <template>
@@ -54,35 +48,6 @@ const handleSelectedRangesChange = (ranges) => {
   selectedRanges.value = ranges;
 };
 </script>
-```
-
-### React
-
-```bash
-npm install @weektime-picker/react
-or
-pnpm add @weektime-picker/react
-```
-
-![alt text](./images/react.png)
-
-```jsx
-import React, { useState } from "react";
-import { WeekTimeGrid } from "@weektime-picker/react";
-
-function App() {
-  const [selectedRanges, setSelectedRanges] = useState([]);
-
-  return (
-    <WeekTimeGrid
-      selectedRanges={selectedRanges}
-      onSelectedRangesChange={setSelectedRanges}
-      startHour={9}
-      endHour={18}
-      timeInterval={60}
-    />
-  );
-}
 ```
 
 ## API
@@ -107,27 +72,6 @@ interface TimeRange {
   startTime: number; // Start time in minutes from 00:00
   endTime: number; // End time in minutes from 00:00
 }
-```
-
-## Development
-
-```bash
-# Install dependencies
-pnpm install
-
-# Localhost development
-pnpm run dev:react
-or
-pnpm run dev:vue
-
-# Build all packages
-pnpm build
-
-# Run tests
-pnpm test
-
-# Release packages
-pnpm release
 ```
 
 ## License

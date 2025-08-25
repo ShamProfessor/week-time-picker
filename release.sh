@@ -12,6 +12,36 @@ if ! npm whoami > /dev/null 2>&1; then
     exit 1
 fi
 
+# 获取当前版本号
+echo "📌 当前版本号:"
+CORE_VERSION=$(node -p "require('./packages/core/package.json').version")
+REACT_VERSION=$(node -p "require('./packages/react/package.json').version")
+VUE_VERSION=$(node -p "require('./packages/vue/package.json').version")
+echo "  - @weektime-picker/core: $CORE_VERSION"
+echo "  - @weektime-picker/react: $REACT_VERSION"
+echo "  - @weektime-picker/vue: $VUE_VERSION"
+
+# 更新版本号
+echo "📌 更新版本号..."
+cd packages/core
+npm version patch --no-git-tag-version
+cd ../..
+cd packages/react
+npm version patch --no-git-tag-version
+cd ../..
+cd packages/vue
+npm version patch --no-git-tag-version
+cd ../..
+
+# 获取新版本号
+echo "📌 新版本号:"
+NEW_CORE_VERSION=$(node -p "require('./packages/core/package.json').version")
+NEW_REACT_VERSION=$(node -p "require('./packages/react/package.json').version")
+NEW_VUE_VERSION=$(node -p "require('./packages/vue/package.json').version")
+echo "  - @weektime-picker/core: $NEW_CORE_VERSION"
+echo "  - @weektime-picker/react: $NEW_REACT_VERSION"
+echo "  - @weektime-picker/vue: $NEW_VUE_VERSION"
+
 # 清理构建产物
 echo "🧹 清理构建产物..."
 pnpm --filter @weektime-picker/core clean
@@ -96,9 +126,9 @@ cd ../..
 echo "🎉 发布完成！"
 echo ""
 echo "📋 发布的包："
-echo "  - @weektime-picker/core@$(node -p "require('./packages/core/package.json').version")"
-echo "  - @weektime-picker/react@$(node -p "require('./packages/react/package.json').version")"
-echo "  - @weektime-picker/vue@$(node -p "require('./packages/vue/package.json').version")"
+echo "  - @weektime-picker/core@$NEW_CORE_VERSION"
+echo "  - @weektime-picker/react@$NEW_REACT_VERSION"
+echo "  - @weektime-picker/vue@$NEW_VUE_VERSION"
 echo ""
 echo "🔗 NPM链接："
 echo "  - https://www.npmjs.com/package/@weektime-picker/core"

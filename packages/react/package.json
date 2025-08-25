@@ -1,6 +1,6 @@
 {
   "name": "@weektime-picker/react",
-  "version": "0.2.0",
+  "version": "0.2.5",
   "description": "Week time grid component for React",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -10,9 +10,13 @@
   ],
   "scripts": {
     "dev": "vite examples --config ./vite.config.ts",
-    "build": "vite build",
+    "build": "vite build && npx tsc -p tsconfig.build.json",
     "clean": "rimraf dist",
     "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShamProfessor/week-time-picker.git"
   },
   "keywords": [
     "time-picker",

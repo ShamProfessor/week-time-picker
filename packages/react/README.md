@@ -1,15 +1,11 @@
----
-marp: false
----
-
 # WeekTime Picker
 
-A flexible week time grid component for Vue and React applications.
+A flexible week time grid component for React applications.
 
 ## Features
 
 - 📅 Week-based time selection grid
-- ⚡ Support for Vue 3 and React 18+
+- ⚡ Support for React 18+
 - 🎨 Customizable themes and styling
 - 📱 Responsive design
 - 🔧 TypeScript support
@@ -17,44 +13,9 @@ A flexible week time grid component for Vue and React applications.
 
 ## Packages
 
-- `@weektime-picker/core` - Core logic and utilities
-- `@weektime-picker/vue` - Vue 3 component
 - `@weektime-picker/react` - React component
 
 ## Installation & Usage
-
-### Vue 3
-
-```bash
-npm install @weektime-picker/vue
-or
-pnpm add @weektime-picker/react
-
-```
-
-![alt text](./images/vue.png)
-
-```vue
-<template>
-  <WeekTimeGrid
-    :selectedRanges="selectedRanges"
-    @selectedRangesChange="handleSelectedRangesChange"
-    :startHour="9"
-    :endHour="18"
-    :timeInterval="60"
-  />
-</template>
-
-<script setup>
-import { ref } from "vue";
-import { WeekTimeGrid } from "@weektime-picker/vue";
-
-const selectedRanges = ref([]);
-const handleSelectedRangesChange = (ranges) => {
-  selectedRanges.value = ranges;
-};
-</script>
-```
 
 ### React
 
@@ -62,9 +23,10 @@ const handleSelectedRangesChange = (ranges) => {
 npm install @weektime-picker/react
 or
 pnpm add @weektime-picker/react
+
 ```
 
-![alt text](./images/react.png)
+![react示例](https://github.com/ShamProfessor/week-time-picker/blob/main/images/react.png)
 
 ```jsx
 import React, { useState } from "react";
@@ -107,27 +69,6 @@ interface TimeRange {
   startTime: number; // Start time in minutes from 00:00
   endTime: number; // End time in minutes from 00:00
 }
-```
-
-## Development
-
-```bash
-# Install dependencies
-pnpm install
-
-# Localhost development
-pnpm run dev:react
-or
-pnpm run dev:vue
-
-# Build all packages
-pnpm build
-
-# Run tests
-pnpm test
-
-# Release packages
-pnpm release
 ```
 
 ## License

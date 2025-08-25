@@ -1,6 +1,6 @@
 {
-  "name": "weektime-picker-core",
-  "version": "0.2.0",
+  "name": "@weektime-picker/core",
+  "version": "0.2.5",
   "description": "Core logic for weektime-picker component",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -13,6 +13,10 @@
     "build": "rollup -c && node scripts/postbuild.js",
     "clean": "rimraf dist",
     "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShamProfessor/week-time-picker.git"
   },
   "keywords": [
     "time-picker",
