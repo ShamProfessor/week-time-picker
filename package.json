@@ -10,7 +10,10 @@
     "build": "pnpm --filter @weektime-picker/* build",
     "test": "pnpm --filter @weektime-picker/* test",
     "clean": "pnpm --filter @weektime-picker/* clean",
-    "release": "./release.sh"
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "./release.sh",
+    "release:ci": "pnpm build && changeset publish"
   },
   "keywords": [
     "time-picker",

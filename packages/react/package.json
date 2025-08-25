@@ -1,6 +1,6 @@
 {
   "name": "@weektime-picker/react",
-  "version": "0.2.5",
+  "version": "1.0.0",
   "description": "Week time grid component for React",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

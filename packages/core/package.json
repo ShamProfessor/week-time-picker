@@ -1,6 +1,6 @@
 {
   "name": "@weektime-picker/core",
-  "version": "0.2.5",
+  "version": "1.0.0",
   "description": "Core logic for weektime-picker component",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

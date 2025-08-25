@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# WeekTime Picker 多包发布脚本
+# WeekTime Picker 发布脚本 (使用 Changesets)
 
 set -e
 
@@ -12,28 +12,27 @@ if ! npm whoami > /dev/null 2>&1; then
     exit 1
 fi
 
-# 获取当前版本号
+# 检查是否有待处理的 changesets
+if [ ! "$(find .changeset -name '*.md' -not -name 'README.md' 2>/dev/null)" ]; then
+    echo "❌ 没有找到待处理的 changesets"
+    echo "💡 请先运行: pnpm changeset"
+    echo "   然后添加你的变更记录"
+    exit 1
+fi
+
+# 显示当前版本号
 echo "📌 当前版本号:"
-CORE_VERSION=$(node -p "require('./packages/core/package.json').version")
-REACT_VERSION=$(node -p "require('./packages/react/package.json').version")
-VUE_VERSION=$(node -p "require('./packages/vue/package.json').version")
-echo "  - @weektime-picker/core: $CORE_VERSION"
-echo "  - @weektime-picker/react: $REACT_VERSION"
-echo "  - @weektime-picker/vue: $VUE_VERSION"
+echo "  - @weektime-picker/core: $(node -p "require('./packages/core/package.json').version")"
+echo "  - @weektime-picker/react: $(node -p "require('./packages/react/package.json').version")"
+echo "  - @weektime-picker/vue: $(node -p "require('./packages/vue/package.json').version")"
 
-# 更新版本号
-echo "📌 更新版本号..."
-cd packages/core
-npm version patch --no-git-tag-version
-cd ../..
-cd packages/react
-npm version patch --no-git-tag-version
-cd ../..
-cd packages/vue
-npm version patch --no-git-tag-version
-cd ../..
+# 使用 changesets 更新版本号和生成 changelog
+echo ""
+echo "📝 更新版本号和生成 changelog..."
+pnpm changeset version
 
-# 获取新版本号
+# 显示新版本号
+echo ""
 echo "📌 新版本号:"
 NEW_CORE_VERSION=$(node -p "require('./packages/core/package.json').version")
 NEW_REACT_VERSION=$(node -p "require('./packages/react/package.json').version")
@@ -42,108 +41,66 @@ echo "  - @weektime-picker/core: $NEW_CORE_VERSION"
 echo "  - @weektime-picker/react: $NEW_REACT_VERSION"
 echo "  - @weektime-picker/vue: $NEW_VUE_VERSION"
 
-# 清理构建产物
+# 清理和构建
+echo ""
 echo "🧹 清理构建产物..."
-pnpm --filter @weektime-picker/core clean
-pnpm --filter @weektime-picker/react clean
-pnpm --filter @weektime-picker/vue clean
+pnpm clean
 
-# 构建core包
-echo "🔨 构建 @weektime-picker/core..."
-pnpm --filter @weektime-picker/core build
-
-# 构建react包
-echo "📦 构建 @weektime-picker/react..."
-pnpm --filter @weektime-picker/react build
-
-# 构建vue包
-echo "📦 构建 @weektime-picker/vue..."
-pnpm --filter @weektime-picker/vue build
+echo "🔨 构建所有包..."
+pnpm build
 
 # 运行测试
+echo ""
 echo "🧪 运行测试..."
-pnpm --filter @weektime-picker/core test
-pnpm --filter @weektime-picker/react test
-pnpm --filter @weektime-picker/vue test
+pnpm test
 
 # 检查构建产物
+echo ""
 echo "📋 检查构建产物..."
 
-# 检查core包 (使用rollup构建)
-if [ ! -d "packages/core/dist" ]; then
-    echo "❌ packages/core/dist 目录不存在"
-    exit 1
-fi
-
-if [ ! -f "packages/core/dist/index.js" ]; then
-    echo "❌ packages/core/dist/index.js 不存在"
-    exit 1
-fi
-
-if [ ! -f "packages/core/dist/index.d.ts" ]; then
-    echo "❌ packages/core/dist/index.d.ts 不存在"
-    exit 1
-fi
-
-# 检查react和vue包 (使用vite构建)
-for package in react vue; do
+# 检查必要文件是否存在
+for package in core react vue; do
     if [ ! -d "packages/$package/dist" ]; then
         echo "❌ packages/$package/dist 目录不存在"
         exit 1
     fi
     
-    if [ ! -f "packages/$package/dist/index.es.js" ]; then
-        echo "❌ packages/$package/dist/index.es.js 不存在"
-        exit 1
-    fi
-    
-    if [ ! -f "packages/$package/dist/index.umd.js" ]; then
-        echo "❌ packages/$package/dist/index.umd.js 不存在"
+    if [ ! -f "packages/$package/dist/index.d.ts" ]; then
+        echo "❌ packages/$package/dist/index.d.ts 不存在"
         exit 1
     fi
 done
 
-echo "✅ 所有检查通过，准备发布..."
+echo "✅ 所有检查通过！"
 
-# 发布core包
-echo "📤 发布 @weektime-picker/core..."
-cd packages/core
-npm publish
-cd ../..
+# 确认发布
+echo ""
+read -p "🤔 确认发布以上版本到 npm? (y/N): " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "❌ 发布已取消"
+    exit 1
+fi
 
-# 发布react包
-echo "📤 发布 @weektime-picker/react..."
-cd packages/react
-npm publish
-cd ../..
+# 使用 changesets 发布
+echo ""
+echo "📤 发布到 npm..."
+pnpm changeset publish
 
-# 发布vue包
-echo "📤 发布 @weektime-picker/vue..."
-cd packages/vue
-npm publish
-cd ../..
-
+echo ""
 echo "🎉 发布完成！"
 echo ""
-echo "📋 发布的包："
+echo "📋 已发布的包："
 echo "  - @weektime-picker/core@$NEW_CORE_VERSION"
 echo "  - @weektime-picker/react@$NEW_REACT_VERSION"
 echo "  - @weektime-picker/vue@$NEW_VUE_VERSION"
 echo ""
-echo "🔗 NPM链接："
+echo "🔗 NPM 链接："
 echo "  - https://www.npmjs.com/package/@weektime-picker/core"
 echo "  - https://www.npmjs.com/package/@weektime-picker/react"
 echo "  - https://www.npmjs.com/package/@weektime-picker/vue"
 echo ""
-echo "📖 使用方法："
-echo "  # React项目"
-echo "  npm install @weektime-picker/react"
-echo "  import { WeekTimeGrid } from '@weektime-picker/react'"
-echo ""
-echo "  # Vue项目"
-echo "  npm install @weektime-picker/vue"
-echo "  import { WeekTimeGrid } from '@weektime-picker/vue'"
-echo ""
-echo "  # 仅使用核心逻辑"
-echo "  npm install @weektime-picker/core"
-echo "  import { WeekTimeGridCore } from '@weektime-picker/core'"
+echo "💡 下次发布流程："
+echo "  1. 开发完成后运行: pnpm changeset"
+echo "  2. 添加变更记录并提交代码"
+echo "  3. 运行: pnpm release"

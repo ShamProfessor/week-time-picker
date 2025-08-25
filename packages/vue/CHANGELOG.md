@@ -1,23 +1,22 @@
 # @weektime-picker/vue
 
-## 0.2.0
+## 1.0.0
 
-### Minor Changes
+### Major Changes
 
-- Initial release of WeekTime Picker components.
-
-### Patch Changes
-
-- Updated dependencies
-  - @weektime-picker/core@0.2.0
-
-## 0.1.0
-
-### Minor Changes
-
-- Initial release of WeekTime Picker components.
+- update global config,includes ts build res conf,changeset conf
 
 ### Patch Changes
 
 - Updated dependencies
-  - @weektime-picker/core@0.1.0
+  - @weektime-picker/core@1.0.0
+
+## 0.2.6
+
+### Patch Changes
+
+- Initial release of Vue 3 wrapper for week time grid component
+- Vue 3 composition API integration
+- TypeScript support
+- Updated dependencies
+  - @weektime-picker/core@0.2.6
