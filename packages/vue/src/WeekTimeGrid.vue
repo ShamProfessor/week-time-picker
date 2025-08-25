@@ -61,7 +61,7 @@ import {
   WeekTimeGridCore,
   TimeRange,
   WeekTimeGridOptions,
-} from "weektime-picker-core";
+} from "@weektime-picker/core";
 
 export default defineComponent({
   name: "WeekTimeGrid",

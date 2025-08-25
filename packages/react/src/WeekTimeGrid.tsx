@@ -3,7 +3,7 @@ import {
   WeekTimeGridCore,
   TimeRange,
   WeekTimeGridOptions,
-} from "weektime-picker-core";
+} from "@weektime-picker/core";
 import "./WeekTimeGrid.css";
 
 export interface WeekTimeGridProps {
